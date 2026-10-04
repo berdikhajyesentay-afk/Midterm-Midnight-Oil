@@ -2,21 +2,248 @@
    home.css - styles ONLY for index.html
    Page owner: Byerdikhajy Yesyentai
 
-   Colors and fonts come from style.css, for example:
-       color: var(--lamp);   font-family: var(--font-mono);
-   Write mobile-first: normal rules are for a phone,
-   then add @media (min-width: ...) for bigger screens.
+   Part 1: hero and the lamp glow
+   Part 2: the lamp + coffee cup drawing (only CSS, no image)
+   Part 3: "Why study here" - my own Grid and media queries
+   Part 4: tonight's special and opening hours
+   Mobile-first: normal rules are for a phone,
+   @media (min-width: ...) adds changes for bigger screens.
    ========================================================== */
 
-/* your styles here */
+/* ---------- Part 1: hero ---------- */
 
-
-/* ---- tablet: from 768px ---- */
-@media (min-width: 768px) {
-
+/* the "lamp glow": a soft warm circle of light behind the hero,
+   made with a radial gradient that fades to transparent */
+.hero {
+    background: radial-gradient(circle at 75% 40%, rgba(242, 180, 90, 0.18), transparent 55%);
 }
 
-/* ---- laptop: from 992px ---- */
-@media (min-width: 992px) {
+.hero__title {
+    font-size: 3rem;
+    line-height: 1;
+}
 
+.hero__text {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 32rem;
+    margin: 1rem 0 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .hero__title {
+        font-size: 4.5rem;
+    }
+}
+
+/* ---------- Part 2: the drawing ----------
+   .scene is the "paper". It is position: relative, so the parts inside
+   (position: absolute) are placed from its corners. This is only for the
+   drawing, not for the page layout. */
+.scene {
+    position: relative;
+    height: 260px;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+/* the desk: a line at the bottom */
+.desk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background-color: var(--muted);
+    border-radius: 3px;
+}
+
+/* the lamp arm: a thin bar, turned with rotate() */
+.lamp__arm {
+    position: absolute;
+    left: 40px;
+    bottom: 6px;
+    width: 8px;
+    height: 200px;
+    background-color: var(--muted);
+    transform: rotate(12deg);
+    transform-origin: bottom;
+}
+
+/* the lamp shade: a half circle (only the top corners are rounded) */
+.lamp__shade {
+    position: absolute;
+    left: 50px;
+    top: 30px;
+    width: 120px;
+    height: 60px;
+    background-color: var(--sage);
+    border-radius: 60px 60px 0 0;
+}
+
+/* the light: a trapezoid cut with clip-path, colored with a gradient
+   that goes from lamp-yellow to transparent */
+.lamp__light {
+    position: absolute;
+    left: 30px;
+    top: 90px;
+    width: 160px;
+    height: 164px;
+    background: linear-gradient(rgba(242, 180, 90, 0.55), transparent);
+    clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+}
+
+/* the cup: a rectangle with round bottom corners */
+.cup {
+    position: absolute;
+    left: 85px;
+    bottom: 6px;
+    width: 70px;
+    height: 55px;
+    background-color: var(--chalk);
+    border-radius: 0 0 30px 30px;
+}
+
+/* the handle: an empty circle with a thick border, made with ::after */
+.cup::after {
+    content: "";
+    position: absolute;
+    right: -22px;
+    top: 10px;
+    width: 26px;
+    height: 26px;
+    border: 6px solid var(--chalk);
+    border-radius: 50%;
+}
+
+/* the steam: 3 thin lines that rise and fade (animation) */
+.steam {
+    position: absolute;
+    bottom: 60px;
+    width: 6px;
+    height: 30px;
+    background-color: var(--muted);
+    border-radius: 3px;
+    opacity: 0;
+    animation: rise 3s infinite;
+}
+
+.steam:nth-child(1) { left: 18px; }
+.steam:nth-child(2) { left: 32px; animation-delay: 1s; }
+.steam:nth-child(3) { left: 46px; animation-delay: 2s; }
+
+@keyframes rise {
+    0%   { transform: translateY(0);     opacity: 0; }
+    30%  { opacity: 0.7; }
+    100% { transform: translateY(-40px); opacity: 0; }
+}
+
+/* people who turned off animations in their system settings see no movement */
+@media (prefers-reduced-motion: reduce) {
+    .steam {
+        animation: none;
+        opacity: 0.5;
+    }
+}
+
+/* ---------- Part 3: "Why study here" - my own media queries ---------- */
+
+/* phone: 1 column */
+.features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.feature {
+    background-color: var(--night-light);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+/* hover detail: the box lifts a little and the border lights up */
+.feature:hover {
+    transform: translateY(-4px);
+    border-color: var(--lamp);
+}
+
+.feature h3 {
+    font-size: 1.3rem;
+}
+
+.feature p:last-child {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.feature__stat {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    color: var(--lamp);
+    margin-bottom: 0.25rem;
+}
+
+/* tablet: from 768px, 2 columns */
+@media (min-width: 768px) {
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* laptop: from 1200px, 4 columns, and the text is centered */
+@media (min-width: 1200px) {
+    .features {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .feature {
+        text-align: center;
+    }
+}
+
+/* ---------- Part 4: special and opening hours ---------- */
+
+.special {
+    background-color: var(--night-light);
+}
+
+.special__price {
+    border: 2px dashed var(--lamp);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.special__number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--lamp);
+    margin: 0;
+}
+
+/* each line of the hours: day on the left, time on the right (Flexbox) */
+.hours {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.hours li span:last-child {
+    font-family: var(--font-mono);
+    color: var(--lamp);
+}
+
+.hours__exam span:first-child {
+    color: var(--sage);
 }
