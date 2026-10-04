@@ -44,26 +44,94 @@
             <div class="container">
                 <p class="label">Book a seat</p>
                 <h1>Save your place for tonight</h1>
-                <p>TODO (Yerkebulan): one sentence.</p>
+                <p class="reserve-intro">During exam weeks the quiet zone fills up by 21:00. Book your seat now and it waits for you, with a socket if you need one.</p>
 
                 <div class="row g-4">
+                    <!-- The form is more important, so it is first and wide (8 of 12 columns on a laptop). -->
                     <div class="col-12 col-lg-8">
-                        <!-- TODO (Yerkebulan): the booking FORM (this is the project's form).
-                             Fields: name, email, date, time, number of people, zone (select: quiet / group / sofa),
-                             a checkbox "I need a socket", and a submit button with class="btn btn-lamp".
-                             Every input needs a <label for="..."> that matches its id.
-                             Use the Bootstrap grid inside the form (col-12 col-md-6) so fields sit side by side on bigger screens.
-                             Example of one field: -->
+                        <!-- ===== THE BOOKING FORM =====
+                             Every <label for="x"> matches an <input id="x">: clicking the label focuses the field.
+                             "required" means the browser will not send the form while the field is empty.
+                             Inside the form the Bootstrap grid puts 2 fields side by side from 768px (col-md-6). -->
                         <form class="booking-form">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Your name</label>
-                                <input type="text" id="name" class="form-control" required>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="name" class="form-label">Your name</label>
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Aruzhan" required>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="date" id="date" name="date" class="form-control" required>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <label for="time" class="form-label">Arrival time</label>
+                                    <input type="time" id="time" name="time" class="form-control" min="18:00" required>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <label for="people" class="form-label">People</label>
+                                    <input type="number" id="people" name="people" class="form-control" min="1" max="6" value="1">
+                                </div>
                             </div>
-                            <!-- TODO: add the other fields -->
+
+                            <!-- Zone: radio buttons that look like tiles (styled in reserve.css).
+                                 All 3 have the same name="zone", so only one can be chosen. -->
+                            <fieldset class="zones">
+                                <legend class="form-label">Choose your zone</legend>
+                                <div class="zones__grid">
+                                    <label class="zone">
+                                        <input type="radio" name="zone" value="quiet" checked>
+                                        <span class="zone__icon">🤫</span>
+                                        <span class="zone__name">Quiet zone</span>
+                                        <span class="zone__info">Silence, single desks</span>
+                                    </label>
+                                    <label class="zone">
+                                        <input type="radio" name="zone" value="group">
+                                        <span class="zone__icon">👥</span>
+                                        <span class="zone__name">Group tables</span>
+                                        <span class="zone__info">Talk quietly, up to 6</span>
+                                    </label>
+                                    <label class="zone">
+                                        <input type="radio" name="zone" value="sofa">
+                                        <span class="zone__icon">🛋️</span>
+                                        <span class="zone__name">Sofa corner</span>
+                                        <span class="zone__info">Reading and breaks</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="socket" name="socket" checked>
+                                <label class="form-check-label" for="socket">I need a socket for my laptop</label>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="notes" class="form-label">Anything else?</label>
+                                <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="For example: a seat by the window"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-lamp btn-lg">Book my seat</button>
                         </form>
                     </div>
+
+                    <!-- Info box: 4 of 12 columns on a laptop, under the form on a phone -->
                     <div class="col-12 col-lg-4">
-                        <!-- TODO: a box with the address, phone and opening hours. -->
+                        <aside class="info-box">
+                            <h2>Find us</h2>
+                            <p class="mb-1">12 Kabanbay Batyr Ave, Astana</p>
+                            <p class="mb-3">5 minutes from the university</p>
+                            <h3>Phone</h3>
+                            <p class="mb-3 info-box__mono">+7 700 123 45 67</p>
+                            <h3>How booking works</h3>
+                            <ol class="mb-0">
+                                <li>Send the form.</li>
+                                <li>We email you your seat number.</li>
+                                <li>We keep the seat 30 minutes after your time.</li>
+                            </ol>
+                        </aside>
                     </div>
                 </div>
             </div>
@@ -80,7 +148,7 @@
                 </div>
                 <div class="col-12 col-md-6 text-md-end">
                     <p class="mb-1">&copy; 2026 Byerdikhajy Yesyentai, Byegarys Kuandyg, Nurbergen Asan, Yerkebulan Abenov</p>
-                    <p class="mb-0"><!-- TODO: photo and icon credits, e.g. "Photos: Unsplash" --></p>
+                    <p class="mb-0">Photos: Wikimedia Commons, see <a href="gallery.html">Gallery</a> for credits</p>
                 </div>
             </div>
         </div>

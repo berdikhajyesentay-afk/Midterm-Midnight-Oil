@@ -2,21 +2,158 @@
    reserve.css - styles ONLY for reserve.html
    Page owner: Yerkebulan Abenov
 
-   Colors and fonts come from style.css, for example:
-       color: var(--lamp);   font-family: var(--font-mono);
-   Write mobile-first: normal rules are for a phone,
-   then add @media (min-width: ...) for bigger screens.
+   Part 1: the form fields (restyled Bootstrap form controls)
+   Part 2: the zone tiles - my own Grid and media queries
+   Part 3: the info box
+   Mobile-first: normal rules are for a phone,
+   @media (min-width: ...) adds changes for bigger screens.
    ========================================================== */
 
-/* your styles here */
-
-
-/* ---- tablet: from 768px ---- */
-@media (min-width: 768px) {
-
+.reserve-intro {
+    color: var(--muted);
+    max-width: 40rem;
+    margin-bottom: 2rem;
 }
 
-/* ---- laptop: from 992px ---- */
-@media (min-width: 992px) {
+/* ---------- Part 1: form fields ----------
+   Bootstrap inputs are white; we make them dark with a lamp-colored focus. */
 
+.booking-form .form-label {
+    color: var(--chalk);
+    font-weight: 600;
+}
+
+.booking-form .form-control {
+    background-color: var(--night-light);
+    border: 1px solid var(--line);
+    color: var(--chalk);
+    color-scheme: dark;            /* the date and time pickers open in dark colors */
+}
+
+.booking-form .form-control::placeholder {
+    color: var(--muted);
+}
+
+.booking-form .form-control:focus {
+    background-color: var(--night-light);
+    border-color: var(--lamp);
+    color: var(--chalk);
+    box-shadow: 0 0 0 0.2rem rgba(242, 180, 90, 0.25);   /* soft lamp glow instead of Bootstrap blue */
+}
+
+.booking-form .form-check-input:checked {
+    background-color: var(--lamp);
+    border-color: var(--lamp);
+}
+
+/* ---------- Part 2: zone tiles ---------- */
+
+.zones {
+    margin: 1.5rem 0;
+}
+
+/* phone: the 3 tiles are stacked (1 column) */
+.zones__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+/* one tile: the whole tile is a <label>, so clicking anywhere chooses the radio */
+.zone {
+    display: grid;
+    grid-template-columns: auto 1fr;    /* phone: icon left, text right */
+    column-gap: 0.75rem;
+    align-items: center;
+    background-color: var(--night-light);
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.zone:hover {
+    border-color: var(--muted);
+}
+
+/* hide the real round radio button; the tile border shows the choice instead */
+.zone input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* :has() - when the radio inside this tile is checked, the tile lights up */
+.zone:has(input:checked) {
+    border-color: var(--lamp);
+    background-color: rgba(242, 180, 90, 0.08);
+}
+
+/* keyboard users still see which tile has focus */
+.zone:has(input:focus-visible) {
+    outline: 2px solid var(--lamp);
+    outline-offset: 2px;
+}
+
+.zone__icon {
+    font-size: 1.8rem;
+    grid-row: span 2;
+}
+
+.zone__name {
+    font-weight: 600;
+}
+
+.zone__info {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* tablet: from 768px the 3 tiles sit in one row, and each tile is centered with the icon on top */
+@media (min-width: 768px) {
+    .zones__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .zone {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .zone__icon {
+        grid-row: auto;
+    }
+}
+
+/* ---------- Part 3: info box ---------- */
+
+.info-box {
+    background-color: var(--night-light);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.info-box h2 {
+    font-size: 1.6rem;
+}
+
+.info-box h3 {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lamp);
+}
+
+.info-box__mono {
+    font-family: var(--font-mono);
+}
+
+/* laptop: from 992px the info box stays on screen while you scroll the form */
+@media (min-width: 992px) {
+    .info-box {
+        position: sticky;
+        top: 90px;
+    }
 }
