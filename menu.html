@@ -44,38 +44,131 @@
             <div class="container">
                 <p class="label">Menu</p>
                 <h1>Fuel for long nights</h1>
-                <p>TODO (Byegarys): one sentence about the menu.</p>
+                <p class="menu-intro">Every drink shows its <strong>caffeine level</strong> in lamps: one lamp keeps you calm, four lamps keep you awake until sunrise. Choose wisely before your exam.</p>
 
-                <!-- TODO (Byegarys): the menu as a real HTML TABLE (this is the project's table).
-                     Use <caption>, <thead>, <tbody>, <th> and <td>.
-                     Make 3 groups: Coffee, Tea, Snacks. Put prices in a column.
-                     Style it in menu.css (borders, colors, the price column in var(--font-mono)).
-                     Bootstrap shows <caption> grey and under the table: try caption-side: top; and color: var(--lamp);
-                     On a phone a wide table can overflow: wrap it in <div class="table-responsive">.
-                     Example to start from: -->
+                <!-- ===== THE MENU TABLE =====
+                     One table with 3 groups. Each group is its own <tbody>,
+                     and its first row is a group title (<th colspan="4">, it spans all 4 columns).
+                     .table-responsive (Bootstrap): if the table is wider than a phone,
+                     it scrolls inside its box instead of making the whole page scroll. -->
                 <div class="table-responsive">
                     <table class="menu-table">
-                        <caption>Coffee</caption>
+                        <caption>Midnight Oil menu - prices in tenge</caption>
                         <thead>
                             <tr>
-                                <th>Drink</th>
-                                <th>What is inside</th>
-                                <th>Price</th>
+                                <th scope="col">Item</th>
+                                <th scope="col" class="menu-table__desc">What is inside</th>
+                                <th scope="col">Caffeine</th>
+                                <th scope="col">Price</th>
                             </tr>
                         </thead>
+
                         <tbody>
+                            <tr class="menu-table__group">
+                                <th colspan="4" scope="rowgroup">Coffee</th>
+                            </tr>
                             <tr>
                                 <td>Deadline Espresso</td>
-                                <td>Double shot, no excuses</td>
+                                <td class="menu-table__desc">Double shot, no excuses</td>
+                                <td class="lamps">●●●●</td>
                                 <td>900 ₸</td>
                             </tr>
-                            <!-- TODO: add more rows -->
+                            <tr>
+                                <td>All-Nighter Flat White</td>
+                                <td class="menu-table__desc">Two shots and warm milk</td>
+                                <td class="lamps">●●●○</td>
+                                <td>1 300 ₸</td>
+                            </tr>
+                            <tr>
+                                <td>Last Chapter Latte</td>
+                                <td class="menu-table__desc">One shot, lots of milk, vanilla</td>
+                                <td class="lamps">●●○○</td>
+                                <td>1 200 ₸</td>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            <tr class="menu-table__group">
+                                <th colspan="4" scope="rowgroup">Tea</th>
+                            </tr>
+                            <tr>
+                                <td>Exam Week Black Tea</td>
+                                <td class="menu-table__desc">Strong black tea with lemon, free refills</td>
+                                <td class="lamps">●●○○</td>
+                                <td>600 ₸</td>
+                            </tr>
+                            <tr>
+                                <td>Calm Mind Chamomile</td>
+                                <td class="menu-table__desc">For the last hour before sleep</td>
+                                <td class="lamps">○○○○</td>
+                                <td>700 ₸</td>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            <tr class="menu-table__group">
+                                <th colspan="4" scope="rowgroup">Snacks</th>
+                            </tr>
+                            <tr>
+                                <td>Brain Fuel Sandwich</td>
+                                <td class="menu-table__desc">Chicken, cheese and greens</td>
+                                <td class="lamps">-</td>
+                                <td>1 500 ₸</td>
+                            </tr>
+                            <tr>
+                                <td>Cinnamon Bun</td>
+                                <td class="menu-table__desc">Warm from the oven, every hour</td>
+                                <td class="lamps">-</td>
+                                <td>650 ₸</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </section>
 
-                <!-- TODO: add one more part, for example Bootstrap cards for "Combo of the week"
-                     (1 per row on phone, 2 on tablet, 3 on laptop: row-cols-1 row-cols-md-2 row-cols-lg-3). -->
+        <!-- ===== COMBOS: Bootstrap cards =====
+             row-cols-1: 1 card per row on a phone, row-cols-md-2: 2 from 768px,
+             row-cols-lg-3: 3 from 992px. h-100 makes all cards the same height. -->
+        <section class="section combos">
+            <div class="container">
+                <p class="label">Combos of the week</p>
+                <h2 class="mb-4">Order a plan, not a coffee</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="card combo-card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">The Quick Review</h3>
+                                <p class="card-text">One latte and a cinnamon bun for a two-hour session.</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span>2 hours</span><span class="combo-card__price">1 650 ₸</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card combo-card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">The Group Project</h3>
+                                <p class="card-text">A pot of black tea for four and two sandwiches to share.</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span>4 people</span><span class="combo-card__price">4 200 ₸</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card combo-card h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">The Final Exam</h3>
+                                <p class="card-text">Two espressos, a sandwich and a chamomile tea for the way home.</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <span>all night</span><span class="combo-card__price">3 900 ₸</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -90,7 +183,7 @@
                 </div>
                 <div class="col-12 col-md-6 text-md-end">
                     <p class="mb-1">&copy; 2026 Byerdikhajy Yesyentai, Byegarys Kuandyg, Nurbergen Asan, Yerkebulan Abenov</p>
-                    <p class="mb-0"><!-- TODO: photo and icon credits, e.g. "Photos: Unsplash" --></p>
+                    <p class="mb-0">Photos: Wikimedia Commons, see <a href="gallery.html">Gallery</a> for credits</p>
                 </div>
             </div>
         </div>

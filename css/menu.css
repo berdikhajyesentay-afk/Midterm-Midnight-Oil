@@ -2,21 +2,145 @@
    menu.css - styles ONLY for menu.html
    Page owner: Byegarys Kuandyg
 
-   Colors and fonts come from style.css, for example:
-       color: var(--lamp);   font-family: var(--font-mono);
-   Write mobile-first: normal rules are for a phone,
-   then add @media (min-width: ...) for bigger screens.
+   Part 1: the menu table
+   Part 2: the combo cards (restyled Bootstrap cards)
+   Mobile-first: normal rules are for a phone,
+   @media (min-width: ...) adds changes for bigger screens.
    ========================================================== */
 
-/* your styles here */
-
-
-/* ---- tablet: from 768px ---- */
-@media (min-width: 768px) {
-
+.menu-intro {
+    color: var(--muted);
+    max-width: 40rem;
+    margin-bottom: 2rem;
 }
 
-/* ---- laptop: from 992px ---- */
-@media (min-width: 992px) {
+/* ---------- Part 1: the table ---------- */
 
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;   /* neighbour cells share one border instead of two */
+}
+
+/* Bootstrap puts the caption under the table in grey; we move it to the top */
+.menu-table caption {
+    caption-side: top;
+    color: var(--lamp);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+}
+
+.menu-table th,
+.menu-table td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+}
+
+/* column names */
+.menu-table thead th {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+/* group title rows: Coffee, Tea, Snacks */
+.menu-table__group th {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--chalk);
+    padding-top: 1.5rem;
+    border-bottom: 2px solid var(--lamp);
+}
+
+/* the last column (price): mono font, aligned to the right */
+.menu-table td:last-child,
+.menu-table thead th:last-child {
+    text-align: right;
+    white-space: nowrap;          /* "1 300 ₸" never breaks into two lines */
+}
+
+.menu-table td:last-child {
+    font-family: var(--font-mono);
+    color: var(--lamp);
+}
+
+/* caffeine "lamps" */
+.lamps {
+    color: var(--lamp);
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+}
+
+/* a row lights up when the mouse is over it */
+.menu-table tbody tr:hover td {
+    background-color: var(--night-light);
+}
+
+/* phone: the "What is inside" column is hidden, so the table fits 375px */
+.menu-table__desc {
+    display: none;
+}
+
+/* tablet: from 768px the description column comes back */
+@media (min-width: 768px) {
+    .menu-table__desc {
+        display: table-cell;
+        color: var(--muted);
+    }
+
+    .menu-table th,
+    .menu-table td {
+        padding: 0.9rem 1rem;
+    }
+}
+
+/* ---------- Part 2: combo cards ----------
+   Bootstrap cards are white by default; we make them fit the dark style. */
+
+.combos {
+    background-color: var(--night-light);
+}
+
+.combo-card {
+    background-color: var(--night);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--chalk);
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.combo-card:hover {
+    border-color: var(--lamp);
+    transform: translateY(-4px);
+}
+
+.combo-card .card-title {
+    font-size: 1.4rem;
+}
+
+.combo-card .card-text {
+    color: var(--muted);
+}
+
+.combo-card .card-footer {
+    background-color: transparent;
+    border-top: 1px dashed var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.combo-card__price {
+    color: var(--lamp);
+}
+
+/* laptop: from 992px the card titles get a little bigger */
+@media (min-width: 992px) {
+    .combo-card .card-title {
+        font-size: 1.6rem;
+    }
 }
