@@ -34,8 +34,8 @@ Later files win, so your own CSS can change how Bootstrap looks.
 ## How to work on your page
 
 1. Open the `Midterm_Cafe` folder in VS Code.
-2. Open your page. Read the `TODO` comments. Each one says what to build and gives one example to start from.
-3. Type your own content. Replace the TODO comment when that part is done.
+2. Open your page and its CSS file. The comments above each part explain what it does and why.
+3. Make your change, save, and refresh the page in Chrome.
 4. Open the page in Chrome. Press `F12`, then `Ctrl+Shift+M`, and check it at **375px**, **768px** and **1280px**.
    No sideways scrolling at any width.
 5. When a part works, commit it under **your own name** (see below).
