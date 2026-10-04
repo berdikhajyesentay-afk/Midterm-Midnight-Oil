@@ -2,21 +2,106 @@
    about.css - styles ONLY for about.html
    Page owner: Nurbergen Asan
 
-   Colors and fonts come from style.css, for example:
-       color: var(--lamp);   font-family: var(--font-mono);
-   Write mobile-first: normal rules are for a phone,
-   then add @media (min-width: ...) for bigger screens.
+   Part 1: the night timeline
+   Part 2: house rules - Flexbox with my own media queries
+   Mobile-first: normal rules are for a phone,
+   @media (min-width: ...) adds changes for bigger screens.
    ========================================================== */
 
-/* your styles here */
+/* ---------- Part 1: timeline ----------
+   An <ol> with a vertical line on the left. Each <li> has a round "lamp" dot
+   made with ::before, sitting on the line. */
 
-
-/* ---- tablet: from 768px ---- */
-@media (min-width: 768px) {
-
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.75rem;
+    border-left: 2px solid var(--line);
 }
 
-/* ---- laptop: from 992px ---- */
-@media (min-width: 992px) {
+.timeline li {
+    position: relative;          /* so the dot (::before) is placed from this li */
+    padding-bottom: 1.5rem;
+    color: var(--muted);
+}
 
+.timeline li:last-child {
+    padding-bottom: 0;
+}
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.75rem - 7px);  /* back to the line: the padding + half the dot */
+    top: 0.35rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--lamp);
+    box-shadow: 0 0 10px var(--lamp);   /* the dot glows like a small lamp */
+}
+
+.timeline__time {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--lamp);
+}
+
+/* ---------- Part 2: house rules ---------- */
+
+.rules-section {
+    background-color: var(--night-light);
+}
+
+/* phone: Flexbox column = the rules are stacked */
+.rules {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rule {
+    background-color: var(--night);
+    border-radius: 12px;
+    border-top: 3px solid var(--sage);
+    padding: 1.5rem;
+}
+
+.rule h3 {
+    font-size: 1.25rem;
+}
+
+.rule p {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.rule__number {
+    font-family: var(--font-mono);
+    color: var(--sage);
+    font-size: 0.9rem;
+}
+
+.cta-text {
+    color: var(--muted);
+}
+
+/* tablet: from 768px - a row that wraps, 2 rules per row */
+@media (min-width: 768px) {
+    .rules {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .rule {
+        flex: 1 1 calc(50% - 1rem);    /* grow, shrink, start at half the width minus the gap */
+    }
+}
+
+/* laptop: from 992px - all 4 rules in one row */
+@media (min-width: 992px) {
+    .rule {
+        flex: 1 1 0;
+    }
 }
