@@ -2,21 +2,118 @@
    gallery.css - styles ONLY for gallery.html
    Page owner: Byerdikhajy Yesyentai
 
-   Colors and fonts come from style.css, for example:
-       color: var(--lamp);   font-family: var(--font-mono);
-   Write mobile-first: normal rules are for a phone,
-   then add @media (min-width: ...) for bigger screens.
+   Part 1: the grid - my own media queries
+   Part 2: the "lights on" hover effect
+   Part 3: the quote tile and the credits
+   Mobile-first: normal rules are for a phone,
+   @media (min-width: ...) adds changes for bigger screens.
    ========================================================== */
 
-/* your styles here */
-
-
-/* ---- tablet: from 768px ---- */
-@media (min-width: 768px) {
-
+.gallery-intro {
+    color: var(--muted);
+    max-width: 40rem;
+    margin-bottom: 2rem;
 }
 
-/* ---- laptop: from 992px ---- */
-@media (min-width: 992px) {
+/* ---------- Part 1: the grid ---------- */
 
+/* phone: 1 column, every row 240px tall */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+    gap: 1rem;
+}
+
+.gallery__item {
+    position: relative;          /* the caption is placed from this box */
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;            /* the photo's corners are cut round too */
+}
+
+/* the photo fills its whole cell; object-fit: cover crops it instead of stretching it */
+.gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* tablet: from 768px, 2 columns */
+@media (min-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* laptop: from 992px, 3 columns, and the first photo takes 2 columns and 2 rows */
+@media (min-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 220px;
+    }
+
+    .gallery__item--big {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+/* ---------- Part 2: lights on ----------
+   At rest the photos are darker and a bit warm (sepia), like a room at night.
+   On hover the filter goes back to normal and the photo zooms in a little. */
+.gallery__item img {
+    filter: brightness(0.65) sepia(0.3);
+    transition: filter 0.4s, transform 0.4s;
+}
+
+.gallery__item:hover img {
+    filter: none;
+    transform: scale(1.05);
+}
+
+/* the caption sits on the bottom of the photo, on a dark gradient so it can be read */
+.gallery__item figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 1rem 0.75rem;
+    background: linear-gradient(transparent, rgba(20, 24, 38, 0.9));
+    color: var(--chalk);
+    font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery__item img {
+        transition: none;
+    }
+}
+
+/* ---------- Part 3: quote tile and credits ---------- */
+
+.gallery__quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: var(--night-light);
+    border: 1px solid var(--lamp);
+}
+
+.gallery__quote p {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+.credits {
+    margin-top: 2rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.credits summary {
+    cursor: pointer;
+    color: var(--lamp);
 }

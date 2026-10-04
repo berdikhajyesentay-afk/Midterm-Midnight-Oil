@@ -43,21 +43,52 @@
         <section class="section">
             <div class="container">
                 <p class="label">Gallery</p>
-                <h1>Inside Midnight Oil</h1>
-                <p>TODO (Byerdikhajy): one sentence about the photos.</p>
+                <h1>The taste of a long night</h1>
+                <p class="gallery-intro">The photos are a little dark, like the cafe at night. Move your mouse over a photo to turn its light on.</p>
 
-                <!-- TODO: a photo gallery made with CSS GRID (no Bootstrap row here).
-                     In gallery.css: 1 column on phone, 2 on tablet, 3 on laptop,
-                     and make one photo bigger (grid-column: span 2) for an unusual layout.
-                     Every photo needs alt text, and the photo credit goes in the footer note.
-                     Example of one item: -->
+                <!-- ===== GALLERY: my own CSS Grid (gallery.css), no Bootstrap row =====
+                     Phone: 1 column. Tablet: 2 columns. Laptop: 3 columns, and the first photo
+                     is big (2 columns wide and 2 rows tall) for an unusual layout.
+                     <figure> + <figcaption> = a picture with its caption (semantic HTML). -->
                 <div class="gallery">
-                    <figure class="gallery__item">
-                        <!-- <img src="images/photo1.jpg" alt="Students studying under warm lamps"> -->
-                        <figcaption>The quiet zone at 1 a.m.</figcaption>
+                    <figure class="gallery__item gallery__item--big">
+                        <img src="images/latte.jpg" alt="A cup of latte with a swan drawn in the milk foam">
+                        <figcaption>Latte art for the first coffee of the night</figcaption>
                     </figure>
-                    <!-- TODO: add 5 more <figure> items -->
+                    <figure class="gallery__item">
+                        <img src="images/laptop.jpg" alt="A small coffee next to an open laptop on a wooden table">
+                        <figcaption>Laptop open, coffee ready</figcaption>
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="images/lamp.jpg" alt="An old metal desk lamp with slits in its shade">
+                        <figcaption>A lamp for every desk</figcaption>
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="images/espresso.jpg" alt="An espresso on a black saucer with two sugar sticks, from above">
+                        <figcaption>The Deadline Espresso</figcaption>
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="images/buns.jpg" alt="Cinnamon buns with white icing, close up">
+                        <figcaption>Cinnamon buns, warm every hour</figcaption>
+                    </figure>
+                    <!-- a text tile instead of a photo -->
+                    <div class="gallery__item gallery__quote">
+                        <p>"I wrote my whole thesis at the corner table."</p>
+                        <span class="label">a regular, 2025</span>
+                    </div>
                 </div>
+
+                <!-- Photo credits: the rules allow photos only with credit -->
+                <details class="credits">
+                    <summary>Photo credits</summary>
+                    <ul>
+                        <li>Latte: "Cup of coffee with latte art 2016" by Abdulrohmatt, CC BY-SA 4.0, Wikimedia Commons</li>
+                        <li>Laptop: "Coffee cup next to laptop on wooden table" by Shixart1985, CC BY 2.0, Wikimedia Commons</li>
+                        <li>Lamp: "Old desk lamp in Tuntorp" by W.carter, CC BY-SA 4.0, Wikimedia Commons</li>
+                        <li>Espresso: "Cup of espresso 02" by Kritzolina, CC BY-SA 4.0, Wikimedia Commons</li>
+                        <li>Buns: "Homemade Cinnamon rolls 03" by Pannet, CC BY 4.0, Wikimedia Commons</li>
+                    </ul>
+                </details>
             </div>
         </section>
     </main>
@@ -72,7 +103,7 @@
                 </div>
                 <div class="col-12 col-md-6 text-md-end">
                     <p class="mb-1">&copy; 2026 Byerdikhajy Yesyentai, Byegarys Kuandyg, Nurbergen Asan, Yerkebulan Abenov</p>
-                    <p class="mb-0"><!-- TODO: photo and icon credits, e.g. "Photos: Unsplash" --></p>
+                    <p class="mb-0">Photos: Wikimedia Commons, see <a href="gallery.html">Gallery</a> for credits</p>
                 </div>
             </div>
         </div>
