@@ -44,13 +44,72 @@
             <div class="container">
                 <p class="label">Events</p>
                 <h1>Exam season at Midnight Oil</h1>
-                <p>TODO (Nurbergen): one sentence about events.</p>
+                <p class="events-intro">Studying alone is hard. Every week we host nights that make it easier: silent sessions, group reviews and help from older students.</p>
 
-                <!-- TODO (Nurbergen): a list of events (Silent study night, Group study Sunday,
-                     Coffee & coding...). Ideas:
-                     - Bootstrap accordion: each event opens to show the details.
-                     - or Bootstrap cards with the date in var(--font-mono).
-                     Restyle the Bootstrap component in events.css so it fits the dark style. -->
+                <div class="row g-4">
+                    <!-- ===== EVENTS: Bootstrap accordion =====
+                         Each button opens one panel (data-bs-target = the panel's id).
+                         data-bs-parent="#eventList": opening one panel closes the others.
+                         The first panel has "show", so it is open when the page loads. -->
+                    <div class="col-12 col-lg-8">
+                        <div class="accordion event-list" id="eventList">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ev1" aria-expanded="true" aria-controls="ev1">
+                                        <span class="event-date">MON 21:00</span> Silent Study Night
+                                    </button>
+                                </h2>
+                                <div id="ev1" class="accordion-collapse collapse show" data-bs-parent="#eventList">
+                                    <div class="accordion-body">Three hours of total silence in the whole cafe. Phones go into a box at the door, and you get a free black tea every hour you stay.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ev2" aria-expanded="false" aria-controls="ev2">
+                                        <span class="event-date">WED 19:00</span> Ask a Senior
+                                    </button>
+                                </h2>
+                                <div id="ev2" class="accordion-collapse collapse" data-bs-parent="#eventList">
+                                    <div class="accordion-body">Third- and fourth-year students sit at the group tables and help with maths, programming and English. Bring your questions.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ev3" aria-expanded="false" aria-controls="ev3">
+                                        <span class="event-date">FRI 22:00</span> Coffee &amp; Code
+                                    </button>
+                                </h2>
+                                <div id="ev3" class="accordion-collapse collapse" data-bs-parent="#eventList">
+                                    <div class="accordion-body">A night for programmers: work on your project, show it to others, and get feedback. The best project of the month gets free coffee for a week.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ev4" aria-expanded="false" aria-controls="ev4">
+                                        <span class="event-date">SUN 16:00</span> Group Review Sunday
+                                    </button>
+                                </h2>
+                                <div id="ev4" class="accordion-collapse collapse" data-bs-parent="#eventList">
+                                    <div class="accordion-body">Book a group table for up to six and review for the week's exams together. A whiteboard and markers are on every table.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== SIDE BOX: our study method =====
+                         On a laptop it sits next to the events; on a phone it comes after them. -->
+                    <div class="col-12 col-lg-4">
+                        <aside class="pomodoro">
+                            <p class="label">Our study rhythm</p>
+                            <h2>50 / 10</h2>
+                            <p>Every hour the lamps dim for 10 minutes. That is your break: stand up, refill your cup, rest your eyes.</p>
+                            <div class="pomodoro__bar" aria-hidden="true">
+                                <span class="pomodoro__study"></span><span class="pomodoro__break"></span>
+                            </div>
+                            <p class="pomodoro__legend mb-0"><span>50 min study</span><span>10 min break</span></p>
+                        </aside>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -65,7 +124,7 @@
                 </div>
                 <div class="col-12 col-md-6 text-md-end">
                     <p class="mb-1">&copy; 2026 Byerdikhajy Yesyentai, Byegarys Kuandyg, Nurbergen Asan, Yerkebulan Abenov</p>
-                    <p class="mb-0"><!-- TODO: photo and icon credits, e.g. "Photos: Unsplash" --></p>
+                    <p class="mb-0">Photos: Wikimedia Commons, see <a href="gallery.html">Gallery</a> for credits</p>
                 </div>
             </div>
         </div>

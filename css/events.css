@@ -2,21 +2,122 @@
    events.css - styles ONLY for events.html
    Page owner: Nurbergen Asan
 
-   Colors and fonts come from style.css, for example:
-       color: var(--lamp);   font-family: var(--font-mono);
-   Write mobile-first: normal rules are for a phone,
-   then add @media (min-width: ...) for bigger screens.
+   Part 1: the accordion, restyled for the dark site
+   Part 2: the 50 / 10 study rhythm box
+   Mobile-first: normal rules are for a phone,
+   @media (min-width: ...) adds changes for bigger screens.
    ========================================================== */
 
-/* your styles here */
-
-
-/* ---- tablet: from 768px ---- */
-@media (min-width: 768px) {
-
+.events-intro {
+    color: var(--muted);
+    max-width: 40rem;
+    margin-bottom: 2rem;
 }
 
-/* ---- laptop: from 992px ---- */
-@media (min-width: 992px) {
+/* ---------- Part 1: accordion ----------
+   Bootstrap 5.3 builds the accordion from CSS variables (--bs-accordion-...).
+   Changing the variables is the easiest way to change its colors. */
+.event-list {
+    --bs-accordion-bg: var(--night-light);
+    --bs-accordion-color: var(--chalk);
+    --bs-accordion-border-color: var(--line);
+    --bs-accordion-btn-color: var(--chalk);
+    --bs-accordion-active-bg: var(--night-light);
+    --bs-accordion-active-color: var(--lamp);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(242, 180, 90, 0.25);
+    --bs-accordion-btn-active-icon: var(--bs-accordion-btn-icon);   /* same arrow when open */
+}
 
+/* the arrow picture is dark; invert() turns it light so it shows on the dark background */
+.event-list .accordion-button::after {
+    filter: invert(1);
+}
+
+.event-list .accordion-button {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    flex-wrap: wrap;     /* phone: the date sits above the title */
+}
+
+.event-list .accordion-body {
+    color: var(--muted);
+}
+
+/* phone: the date is a small line above the event name */
+.event-date {
+    display: block;
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--lamp);
+    margin-bottom: 0.25rem;
+}
+
+/* tablet: from 768px the date becomes a small badge before the name */
+@media (min-width: 768px) {
+    .event-list .accordion-button {
+        flex-wrap: nowrap;
+    }
+
+    .event-date {
+        display: inline-block;
+        width: auto;
+        margin: 0 1rem 0 0;
+        padding: 0.2rem 0.6rem;
+        border: 1px solid var(--lamp);
+        border-radius: 99px;
+    }
+}
+
+/* ---------- Part 2: study rhythm box ---------- */
+
+.pomodoro {
+    background-color: var(--night-light);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.pomodoro h2 {
+    font-size: 3rem;
+    color: var(--lamp);
+}
+
+.pomodoro p {
+    color: var(--muted);
+}
+
+/* the bar: 50 parts study (lamp color) and 10 parts break (sage), made with Flexbox */
+.pomodoro__bar {
+    display: flex;
+    height: 14px;
+    border-radius: 7px;
+    overflow: hidden;
+    margin: 1rem 0 0.5rem;
+}
+
+.pomodoro__study {
+    flex: 50;
+    background-color: var(--lamp);
+}
+
+.pomodoro__break {
+    flex: 10;
+    background-color: var(--sage);
+}
+
+.pomodoro__legend {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+/* laptop: from 992px the box stays visible while you read the events */
+@media (min-width: 992px) {
+    .pomodoro {
+        position: sticky;
+        top: 90px;
+    }
 }
