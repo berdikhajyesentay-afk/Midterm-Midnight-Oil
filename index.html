@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midnight Oil - Night Study Cafe</title>
+    <!-- Page owner: Byerdikhajy Yesyentai -->
+
+    <!-- Bootstrap first, then the fonts, then our shared CSS, then this page's own CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+    <!-- ===== SHARED NAVBAR: keep it the same on every page (only "active" moves) ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Midnight Oil<span>.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu"
+                    aria-controls="mainMenu" aria-expanded="false" aria-label="Open menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reserve.html">Book a seat</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO: the first thing visitors see.
+             TODO (Byerdikhajy):
+             1. Write your own big title and one sentence about the cafe.
+             2. Add a photo or illustration next to the text (Bootstrap grid: col-12 col-md-6).
+             3. Make the "lamp glow" in home.css your memorable detail (or invent another one).
+             Example to start from: -->
+        <header class="hero section">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-12 col-md-6">
+                        <p class="label">Open 18:00 - 03:00</p>
+                        <h1>Midnight Oil</h1>
+                        <p>Write your sentence here.</p>
+                        <a class="btn btn-lamp" href="reserve.html">Book a seat</a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <!-- TODO: <img src="images/your-photo.jpg" class="img-fluid" alt="describe the photo"> -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- TODO (Byerdikhajy): add 2-3 more sections, for example:
+             - "Why study here": 3 features (fast wifi, quiet zone, sockets) using Flexbox or Grid
+               with YOUR OWN media queries in home.css (1 per row on phone, 3 on laptop).
+             - "Tonight's special": a short teaser that links to menu.html.
+             - "Opening hours": use a <table> or a list. -->
+    </main>
+
+    <!-- ===== SHARED FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <h2>Midnight Oil<span>.</span></h2>
+                    <p class="mb-0">A night study cafe. Open every day 18:00 - 03:00.</p>
+                </div>
+                <div class="col-12 col-md-6 text-md-end">
+                    <p class="mb-1">&copy; 2026 Byerdikhajy Yesyentai, Byegarys Kuandyg, Nurbergen Asan, Yerkebulan Abenov</p>
+                    <p class="mb-0"><!-- TODO: photo and icon credits, e.g. "Photos: Unsplash" --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS: makes the menu button, accordion, tabs and modals work -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

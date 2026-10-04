@@ -1,0 +1,22 @@
+/* ==========================================================
+   menu.css - styles ONLY for menu.html
+   Page owner: Byegarys Kuandyg
+
+   Colors and fonts come from style.css, for example:
+       color: var(--lamp);   font-family: var(--font-mono);
+   Write mobile-first: normal rules are for a phone,
+   then add @media (min-width: ...) for bigger screens.
+   ========================================================== */
+
+/* your styles here */
+
+
+/* ---- tablet: from 768px ---- */
+@media (min-width: 768px) {
+
+}
+
+/* ---- laptop: from 992px ---- */
+@media (min-width: 992px) {
+
+}

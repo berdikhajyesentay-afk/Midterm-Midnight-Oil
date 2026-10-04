@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Midnight Oil</title>
+    <!-- Page owner: Byegarys Kuandyg -->
+
+    <!-- Bootstrap first, then the fonts, then our shared CSS, then this page's own CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+    <!-- ===== SHARED NAVBAR: keep it the same on every page (only "active" moves) ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Midnight Oil<span>.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu"
+                    aria-controls="mainMenu" aria-expanded="false" aria-label="Open menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reserve.html">Book a seat</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="section">
+            <div class="container">
+                <p class="label">Menu</p>
+                <h1>Fuel for long nights</h1>
+                <p>TODO (Byegarys): one sentence about the menu.</p>
+
+                <!-- TODO (Byegarys): the menu as a real HTML TABLE (this is the project's table).
+                     Use <caption>, <thead>, <tbody>, <th> and <td>.
+                     Make 3 groups: Coffee, Tea, Snacks. Put prices in a column.
+                     Style it in menu.css (borders, colors, the price column in var(--font-mono)).
+                     Bootstrap shows <caption> grey and under the table: try caption-side: top; and color: var(--lamp);
+                     On a phone a wide table can overflow: wrap it in <div class="table-responsive">.
+                     Example to start from: -->
+                <div class="table-responsive">
+                    <table class="menu-table">
+                        <caption>Coffee</caption>
+                        <thead>
+                            <tr>
+                                <th>Drink</th>
+                                <th>What is inside</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Deadline Espresso</td>
+                                <td>Double shot, no excuses</td>
+                                <td>900 ₸</td>
+                            </tr>
+                            <!-- TODO: add more rows -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- TODO: add one more part, for example Bootstrap cards for "Combo of the week"
+                     (1 per row on phone, 2 on tablet, 3 on laptop: row-cols-1 row-cols-md-2 row-cols-lg-3). -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== SHARED FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <h2>Midnight Oil<span>.</span></h2>
+                    <p class="mb-0">A night study cafe. Open every day 18:00 - 03:00.</p>
+                </div>
+                <div class="col-12 col-md-6 text-md-end">
+                    <p class="mb-1">&copy; 2026 Byerdikhajy Yesyentai, Byegarys Kuandyg, Nurbergen Asan, Yerkebulan Abenov</p>
+                    <p class="mb-0"><!-- TODO: photo and icon credits, e.g. "Photos: Unsplash" --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS: makes the menu button, accordion, tabs and modals work -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

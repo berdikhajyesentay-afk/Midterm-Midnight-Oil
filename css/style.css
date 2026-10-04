@@ -1,0 +1,127 @@
+/* ==========================================================
+   style.css - SHARED by every page of Midnight Oil
+   (set up by Byerdikhajy)
+
+   Put here ONLY what every page uses: colors, fonts, the navbar,
+   the footer and the shared button. Styles for one page go in
+   that page's own file (home.css, menu.css, ...).
+
+   Loaded AFTER Bootstrap, so these rules can override Bootstrap.
+   ========================================================== */
+
+/* ---------- 1. Colors and fonts ----------
+   A night study cafe: dark like a room at 1 a.m.,
+   warm amber like a desk lamp, off-white like chalk.
+   Use them with var(--name), for example: color: var(--lamp); */
+:root {
+    --night: #141826;       /* page background */
+    --night-light: #1f2436; /* cards, boxes */
+    --lamp: #f2b45a;        /* main accent: buttons, links, highlights */
+    --lamp-dark: #d99a3d;   /* button hover */
+    --chalk: #ece6da;       /* main text */
+    --muted: #a3a8b8;       /* small, less important text */
+    --sage: #8fb3a0;        /* second accent: "quiet zone", success */
+    --line: #2e3449;        /* borders */
+
+    --font-heading: "DM Serif Display", Georgia, serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace; /* hours, prices, times */
+}
+
+body {
+    background-color: var(--night);
+    color: var(--chalk);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--chalk);
+}
+
+a {
+    color: var(--lamp);
+}
+
+a:hover {
+    color: var(--lamp-dark);
+}
+
+/* small mono labels, e.g. <p class="label">Open till 03:00</p> */
+.label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lamp);
+}
+
+/* every page section gets the same spacing */
+.section {
+    padding: 3rem 0;
+}
+
+@media (min-width: 992px) {
+    .section {
+        padding: 5rem 0;
+    }
+}
+
+/* ---------- 2. Shared button ----------
+   Use together with Bootstrap: <a class="btn btn-lamp" href="...">Book a seat</a> */
+.btn-lamp {
+    background-color: var(--lamp);
+    border-color: var(--lamp);
+    color: var(--night);
+    font-weight: 600;
+}
+
+.btn-lamp:hover,
+.btn-lamp:focus {
+    background-color: var(--lamp-dark);
+    border-color: var(--lamp-dark);
+    color: var(--night);
+}
+
+/* ---------- 3. Navbar (the same on every page) ---------- */
+.site-nav {
+    background-color: rgba(20, 24, 38, 0.95);
+    border-bottom: 1px solid var(--line);
+}
+
+.site-nav .navbar-brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--chalk);
+}
+
+.site-nav .navbar-brand span {
+    color: var(--lamp);   /* the little lamp dot after the name */
+}
+
+.site-nav .nav-link {
+    color: var(--muted);
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+    color: var(--lamp);
+}
+
+/* ---------- 4. Footer (the same on every page) ---------- */
+.site-footer {
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 2rem 0;
+}
+
+.site-footer h2 {
+    font-size: 1.1rem;
+}
+
+.site-footer h2 span {
+    color: var(--lamp);
+}
